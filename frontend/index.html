@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeAlpha Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand" onclick="showPage('home')">CodeAlpha Store</div>
+    <div class="nav-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('products')">Products</a>
+      <a onclick="showPage('cart')" id="cart-link">Cart (<span id="cart-count">0</span>)</a>
+      <a onclick="showPage('orders')" id="orders-link" style="display:none">Orders</a>
+      <a onclick="showPage('profile')" id="profile-link" style="display:none">Profile</a>
+      <a onclick="showPage('login')" id="login-link">Login</a>
+      <a onclick="logout()" id="logout-link" style="display:none">Logout</a>
+    </div>
+  </nav>
+
+  <!-- PAGES -->
+  <div id="app">
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <div class="hero">
+        <h1>Welcome to CodeAlpha Store</h1>
+        <p>Discover amazing products at great prices.</p>
+        <button onclick="showPage('products')">Shop Now</button>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div id="page-products" class="page">
+      <div class="filters">
+        <input type="text" id="search-input" placeholder="Search products..." oninput="filterProducts()" />
+        <select id="category-filter" onchange="filterProducts()">
+          <option value="">All Categories</option>
+        </select>
+        <select id="sort-filter" onchange="filterProducts()">
+          <option value="">Default</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+        </select>
+      </div>
+      <div id="products-grid" class="products-grid"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+
+    <!-- PRODUCT DETAIL -->
+    <div id="page-product-detail" class="page">
+      <div id="product-detail-content"></div>
+    </div>
+
+    <!-- CART -->
+    <div id="page-cart" class="page">
+      <h2>Your Cart</h2>
+      <div id="cart-content"></div>
+    </div>
+
+    <!-- ORDERS -->
+    <div id="page-orders" class="page">
+      <h2>Order History</h2>
+      <div id="orders-content"></div>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="page-profile" class="page">
+      <h2>My Profile</h2>
+      <div id="profile-content"></div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="page-login" class="page">
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+          <button class="tab-btn" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="tab-login">
+          <h2>Login</h2>
+          <input type="email" id="login-email" placeholder="Email" />
+          <input type="password" id="login-password" placeholder="Password" />
+          <button onclick="login()">Login</button>
+          <p id="login-msg" class="msg"></p>
+        </div>
+        <div id="tab-register" style="display:none">
+          <h2>Register</h2>
+          <input type="text" id="reg-name" placeholder="Full Name" />
+          <input type="email" id="reg-email" placeholder="Email" />
+          <input type="password" id="reg-password" placeholder="Password" />
+          <button onclick="register()">Register</button>
+          <p id="reg-msg" class="msg"></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
