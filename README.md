@@ -118,7 +118,7 @@ Go to [http://localhost:5000](http://localhost:5000) in your browser.
 ### Test Credentials
 
 Email: demo@test.com  
-Password: 123456
+Password: 22002222
 
 ## API Endpoints
 
